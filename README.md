@@ -1,7 +1,9 @@
 🚀 Haqqında
+
 Bu, Linux x86 üçün yazılmış minimal C dilində reverse shell nümunəsidir. Kod hədəf maşından hücumçunun IP və portuna TCP bağlantısı qurur və /bin/sh icra edərək uzaqdan tam interaktiv shell imkanı yaradır!
 
 🎯 Xüsusiyyətlər
+
 🔌 Hücumçunun IP və portuna gizli TCP bağlantısı yaradır
 
 🐚 /bin/sh shellini işə salır, interaktiv uzaq shell təmin edir
@@ -28,11 +30,12 @@ Məqsəd maşında proqramı işə sal və shell bağlantısını gözlə!
 Layihə yalnız öyrənmə, tədqiqat və etik pentesting məqsədilə hazırlanıb.
 
 🔧 Texniki Qeydlər
+
 Platforma: Linux x86
 
 Shellcode uzunluğu: 23 bayt
 
 Stack qoruyucusu deaktiv, icra edilə bilən stack aktivdir
 
-Sadə demo məqsədi, heç bir input yoxlaması yoxdur
+Sadə demo məqsədi, heç bir input yoxlaması yoxdur.
 
