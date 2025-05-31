@@ -1,37 +1,38 @@
-Bu layihə sadə C dilində yazılmış reverse shell nümunəsidir. Kod hədəf sistemdən hücumçunun serverinə TCP bağlantısı açaraq, /bin/sh shellini icra edir.
-Funksionallıq
-TCP socket yaradır.
+🚀 Haqqında
+Bu, Linux x86 üçün yazılmış minimal C dilində reverse shell nümunəsidir. Kod hədəf maşından hücumçunun IP və portuna TCP bağlantısı qurur və /bin/sh icra edərək uzaqdan tam interaktiv shell imkanı yaradır!
 
-Hücumçunun IP və portuna qoşulur.
+🎯 Xüsusiyyətlər
+🔌 Hücumçunun IP və portuna gizli TCP bağlantısı yaradır
 
-Qoşulduqdan sonra execve("/bin/sh") çağırışı ilə shell (komanda xətti) əldə edir.
+🐚 /bin/sh shellini işə salır, interaktiv uzaq shell təmin edir
 
-Sadə, minimal shellcode nümunəsidir.
+🧩 Kiçik və səliqəli shellcode C koduna daxil edilib
 
-İstifadə qaydası
-ATTACKER_IP və ATTACKER_PORT dəyişənlərini hücumçunun IP ünvanı və dinləyici portu ilə əvəz edin.
+⚙️ Sadə və pentest laboratoriyaları üçün ideal
 
-Hücumçunun maşınında nc -lvp ATTACKER_PORT kimi dinləyici açın.
+⚙️ Necə istifadə etməli
+ATTACKER_IP və ATTACKER_PORT dəyişənlərini öz hücumçunun IP və portu ilə əvəz et.
 
-Kodu kompilyasiya edin:
+Hücumçunun maşınında aşağıdakı kimi dinləyici aç:
+
+nc -lvp ATTACKER_PORT
+Kodu aşağıdakı kimi tərtib et:
+
 
 gcc -fno-stack-protector -z execstack reverse_shell.c -o reverse_shell
-Hədəf maşında icra edin.
+Məqsəd maşında proqramı işə sal və shell bağlantısını gözlə!
 
-Hücumçunun maşınında shell bağlantısı əldə edin.
+⚠️ Diqqət və Etika
+⚠️ Bu kodu yalnız icazə verilmiş, nəzarət olunan mühitlərdə istifadə et!
+İcazəsiz istifadə qanunsuzdur və etik deyil.
+Layihə yalnız öyrənmə, tədqiqat və etik pentesting məqsədilə hazırlanıb.
 
-Diqqət!
-Bu kod yalnız təhlükəsizlik təlimi və etik hacking məqsədilə istifadə edilməlidir.
+🔧 Texniki Qeydlər
+Platforma: Linux x86
 
-Qanunsuz istifadə hüquqi məsuliyyətə səbəb ola bilər.
+Shellcode uzunluğu: 23 bayt
 
-Müvafiq icazəniz olmayan sistemlərdə işlətdikdə qanun pozuntusu hesab olunur.
+Stack qoruyucusu deaktiv, icra edilə bilən stack aktivdir
 
-Texniki Qeydlər
-Shellcode Linux x86 platforması üçün yazılıb.
+Sadə demo məqsədi, heç bir input yoxlaması yoxdur
 
-Stack qoruması deaktiv edilməlidir (-fno-stack-protector).
-
-Stack-ə icra icazəsi verilməlidir (-z execstack).
-
-Bu kodda hər hansı bir input yoxlaması yoxdur, yalnız konseptual təlim nümunəsidir.
